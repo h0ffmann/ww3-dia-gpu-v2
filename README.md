@@ -14,6 +14,22 @@ port report is [kokkos/port_report/W3SNL1_KOKKOS.md](https://github.com/h0ffmann
 Every statement below about WW3 cites `model/src/<file>.F90:<line>` at `WW3@6d1bcdfe`, the
 commit of the h0ffmann/WW3 branch `hoff/kokkos-snl1` that the port is built against.
 
+## WAVEWATCH III regression tests: v1 against v2
+
+Every entry of WW3's `regtests/bin/matrix.base` whose switch has `NL1` (311 at `WW3@6d1bcdfe`),
+run with the Fortran DIA and with the candidate DIA from one executable, compared byte for byte
+by WW3's `test.comp`.
+
+| | entries runnable | byte-identical to the Fortran | failed |
+|---|---|---|---|
+| v1 (ww3-dia-gpu) | 0 of 311: not callable from WW3 (no shim, no caller in `W3SRCE`), and it computes `SA1`/`SA2`, not the `S` and `D` WW3 integrates | — | — |
+| v2, run in progress (2026-10-15 19:07 UTC, gfortran 16.2) | 157 of 311 finished so far | 157 of 157 | 0 |
+| v2, earlier runs (2026-10-15, gfortran 15.3) | 125 (100 serial, 25 OpenMP) | 125 of 125 | 0 |
+
+16 of the 157 link the port but never call it (GQM grids, `ww3_tc1`); they are counted, and
+reported separately in the final record. This table is replaced by the final count of the
+311-entry run when it ends.
+
 ## What v1 is
 
 `ww3_dia_benchmark.cu` (259 lines) times two CUDA kernels that compute `SA1` and `SA2`, part of
