@@ -1,5 +1,16 @@
 # ww3-dia-gpu-v2: the whole W3SNL1, inside WAVEWATCH III, bit for bit
 
+> [!WARNING]
+> **This project is archived and no longer maintained.**
+> Work on the GPU port continues in **ww3-gpu**, which is now closed source and private, so the
+> links to `h0ffmann/ww3-gpu` below no longer resolve publicly. For news on it, see
+> [@h0ffmann](https://github.com/h0ffmann).
+>
+> **Licence change.** This archived repository stays under the MIT License ([`LICENSE`](LICENSE)),
+> exactly as published. That licence covers only the contents of this repository; it does not
+> extend to ww3-gpu or to any closed-source successor, which are not licensed under it. Code that
+> was already published elsewhere keeps the licence it was published under.
+
 The discrete interaction approximation (DIA) of WAVEWATCH III® (WW3), `W3SNL1` with its table
 builder `INSNL1`, translated to C++ with [Kokkos](https://kokkos.org) (one source for Serial,
 OpenMP and CUDA), called from WW3 itself, and checked against the Fortran with WW3's own
@@ -134,7 +145,7 @@ With the pinned Nix toolchain: `just smoke-hoff`, `just full-hoff`, `just hoff-m
 
 ## Licence and credits
 
-This repository: MIT ([`LICENSE`](LICENSE)). The kernels in ww3-gpu are derived works of WW3 and carry
-`LGPL-3.0-or-later`. v1 is consigcody94's, BSD-3-Clause. WAVEWATCH III® is a registered trademark
+This repository: MIT ([`LICENSE`](LICENSE)); see the archive notice at the top for ww3-gpu. The kernels in ww3-gpu are derived works of WW3 and carry
+`LGPL-3.0-or-later` in the versions published under it. v1 is consigcody94's, BSD-3-Clause. WAVEWATCH III® is a registered trademark
 of NOAA's National Weather Service, used here only to refer to that software; this work is not
 affiliated with, sponsored by or endorsed by NOAA.
