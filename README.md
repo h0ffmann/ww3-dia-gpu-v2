@@ -1,15 +1,21 @@
 # ww3-dia-gpu-v2: the whole W3SNL1, inside WAVEWATCH III, bit for bit
 
-> [!WARNING]
-> **This project is archived and no longer maintained.**
-> Work on the GPU port continues in **ww3-gpu**, which is now closed source and private, so the
-> links to `h0ffmann/ww3-gpu` below no longer resolve publicly. For news on it, see
-> [@h0ffmann](https://github.com/h0ffmann).
+> [!NOTE]
+> **This repository is archived and no longer maintained.** Work on the GPU port continues in
+> [h0ffmann/ww3-gpu](https://github.com/h0ffmann/ww3-gpu), which is public again, under the MIT
+> License, with the kernels translated from WW3 under `LGPL-3.0-or-later`. The links to it below
+> resolve.
 >
-> **Licence change.** This archived repository stays under the MIT License ([`LICENSE`](LICENSE)),
-> exactly as published. That licence covers only the contents of this repository; it does not
-> extend to ww3-gpu or to any closed-source successor, which are not licensed under it. Code that
-> was already published elsewhere keeps the licence it was published under.
+> - **Release:** ww3-gpu v0.2.0, DOI [10.5281/zenodo.24130909](https://doi.org/10.5281/zenodo.24130909);
+>   the concept DOI [10.5281/zenodo.23221351](https://doi.org/10.5281/zenodo.23221351) always
+>   resolves to the latest release.
+> - **Preprint:** [aiXiv:2611.01104](https://aixiv.online/abs/2611.01104).
+> - **Site:** <https://wave.piabrota.art/>.
+> - **WW3 in Rust:** [h0ffmann/chaceon](https://github.com/h0ffmann/chaceon), which ww3-gpu builds
+>   and compares with WW3's Fortran (`--chaceon`).
+>
+> This repository stays under the MIT License ([`LICENSE`](LICENSE)), exactly as published; that
+> licence covers only its contents.
 
 The discrete interaction approximation (DIA) of WAVEWATCH III® (WW3), `W3SNL1` with its table
 builder `INSNL1`, translated to C++ with [Kokkos](https://kokkos.org) (one source for Serial,
@@ -130,22 +136,22 @@ published only with a passed regression run on the same commit.
 
 ## Run it
 
-Ubuntu image, no Nix, CPU only (the image holds the compiled programs, not the sources; its
-`docker/` and `just docker-*` recipes arrive in ww3-gpu with the pull request of the 311-entry run):
+Ubuntu image, no Nix, CPU only (the image holds the compiled programs, not the sources; see
+ww3-gpu's [`docker/`](https://github.com/h0ffmann/ww3-gpu/tree/main/docker)):
 
 ```console
 git clone --recurse-submodules https://github.com/h0ffmann/ww3-gpu.git && cd ww3-gpu
-just docker-build
-just docker-run --hoff smoke     # Kokkos DIA against Fortran DIA, same executable
-just docker-run --ww3 full
+just dbuild
+just dsmoke-ww3-gpu     # Kokkos DIA against Fortran DIA, same executable
+just dfull-ww3
 ```
 
-With the pinned Nix toolchain: `just smoke-hoff`, `just full-hoff`, `just hoff-matrix 8 all`
+With the pinned Nix toolchain: `just smoke-ww3-gpu`, `just full-ww3-gpu`, `just ww3-gpu-matrix 8 all`
 (see ww3-gpu's [`README.md`](https://github.com/h0ffmann/ww3-gpu#readme)).
 
 ## Licence and credits
 
-This repository: MIT ([`LICENSE`](LICENSE)); see the archive notice at the top for ww3-gpu. The kernels in ww3-gpu are derived works of WW3 and carry
-`LGPL-3.0-or-later` in the versions published under it. v1 is consigcody94's, BSD-3-Clause. WAVEWATCH III® is a registered trademark
+This repository: MIT ([`LICENSE`](LICENSE)); ww3-gpu is MIT, and its kernels, derived works of WW3, carry
+`LGPL-3.0-or-later` ([ww3-gpu's licensing](https://github.com/h0ffmann/ww3-gpu#licensing)). v1 is consigcody94's, BSD-3-Clause. WAVEWATCH III® is a registered trademark
 of NOAA's National Weather Service, used here only to refer to that software; this work is not
 affiliated with, sponsored by or endorsed by NOAA.
